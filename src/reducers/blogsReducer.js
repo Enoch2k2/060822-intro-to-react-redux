@@ -1,27 +1,26 @@
-const initialState = { blogsLoading: true, blogs: [ { title: "Test Blog 1", content: "Test Content 1" } ] }
+const initialState = [
+  {
+    title: "Some Title",
+    content: "Some Content"
+  }
+]
+
+// action would be an object
+
+// {
+//   type: "DELETE_BLOGS",
+//   payload: blog
+// }
+
+// useState([])
 
 const blogsReducer = (state=initialState, action) => {
-   switch(action.type) {
-    case "ADD_BLOG":
-      return {
-        ...state,
-        blogs: [...state.blogs, action.payload]
-      }
-    // case "BLOGS_LOADED":
-    //   return {
-    //     ...state,
-    //     blogsLoading: false,
-    //     blogs: action.payload
-    //   }
-
+  switch(action.type) {
+    // case "ADD_BLOG":
+    //   return [...state, action.payload]
     default:
-      return initialState;
-   }
+      return state;
+  }
 }
 
 export default blogsReducer;
-
-// get request -> controller -> action and does something (updates the database)?
-
-// actions : { type: "LOAD_BLOGS"}
-// actions : { type: "BLOGS_LOADED", payload: data }

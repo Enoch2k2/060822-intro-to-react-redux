@@ -1,16 +1,14 @@
 import React, {useState} from 'react'
-import { useDispatch } from 'react-redux'
-import { addBlog } from '../actions'
 
-const BlogForm = () => {
+const BlogForm = ({ addBlog }) => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
 
-  const dispatch = useDispatch();
-
   const handleSubmit = e => {
     e.preventDefault();
-    dispatch(addBlog({ title, content }))
+    addBlog({ title, content })
+    setTitle("")
+    setContent("")
   }
 
   return (

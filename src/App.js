@@ -1,8 +1,9 @@
-
-import BlogForm from "./blogs.js/BlogForm";
-import BlogList from "./blogs.js/BlogList";
+import BlogForm from "./components/blogs/BlogForm";
+import BlogList from "./components/blogs/BlogList";
 
 const App = () => {
+  // const [blogs, setBlogs] = useState([])
+
   return (
     <div className="App">
       <h1>Blog Stuffs</h1>
