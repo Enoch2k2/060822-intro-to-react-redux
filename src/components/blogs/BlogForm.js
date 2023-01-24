@@ -1,19 +1,33 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import { addBlog, updateBlog } from '../../actions/blogs';
+import { useDispatch, useSelector } from 'react-redux';
 
-const BlogForm = ({ addBlog }) => {
+const BlogForm = () => {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
+  const [id, setId] = useState(null);
+  const { editMode, editedBlog } = useSelector(store => store.blogs )
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if(editMode) {
+      setTitle(editedBlog.title)
+      setContent(editedBlog.content)
+      setId(editedBlog.id)
+    }
+  }, [editMode])
 
   const handleSubmit = e => {
     e.preventDefault();
-    addBlog({ title, content })
+    const blog = { title, content, id };
+    dispatch(editMode ? updateBlog(blog) : addBlog(blog))
     setTitle("")
     setContent("")
   }
 
   return (
     <div>
-      <h3>Create Blog</h3>
+      <h3>{editMode ? "Edit" : "Create"} Blog</h3>
       <form onSubmit={ handleSubmit }>
         <div>
           <label htmlFor="title">Title: </label>
@@ -24,7 +38,7 @@ const BlogForm = ({ addBlog }) => {
           <textarea id="content" value={ content } onChange={ e => setContent(e.target.value) } />
         </div>
 
-        <input type="submit" value="Create Blog" />
+        <input type="submit" value={`${editMode ? "Edit " : "Create"} Blog`} />
       </form>
     </div>
   )

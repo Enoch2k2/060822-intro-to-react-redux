@@ -2,7 +2,6 @@ import BlogForm from "./components/blogs/BlogForm";
 import BlogList from "./components/blogs/BlogList";
 
 const App = () => {
-  // const [blogs, setBlogs] = useState([])
 
   return (
     <div className="App">

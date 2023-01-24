@@ -6,8 +6,7 @@ import { useSelector } from 'react-redux'
 const BlogList = () => {
   // grab blogs from redux store
   const { loggedIn, currentUser } = useSelector(store => store.sessions)
-  console.log(loggedIn)
-  const blogs = useSelector((store) => store.blogs)
+  const { blogs } = useSelector((store) => store.blogs)
 
   const blogCards = blogs.map((blog, idx) => <BlogCard key={ idx } blog={ blog} />)
 
