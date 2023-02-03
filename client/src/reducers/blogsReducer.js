@@ -1,8 +1,7 @@
 const initialState = {
   blogs: [],
   editedBlog: null,
-  editMode: false,
-  id: 0
+  editMode: false
 }
 
 // action would be an object
@@ -16,11 +15,15 @@ const initialState = {
 
 const blogsReducer = (state=initialState, action) => {
   switch(action.type) {
+    case "LOAD_BLOGS":
+      return {
+        ...state,
+        blogs: action.payload
+      }
     case "ADD_BLOG":
       return {
         ...state,
-        blogs: [...state.blogs, {...action.payload, id: state.id + 1 }],
-        id: state.id + 1
+        blogs: [...state.blogs, action.payload],
       }
     case "DELETE_BLOG":
       return {

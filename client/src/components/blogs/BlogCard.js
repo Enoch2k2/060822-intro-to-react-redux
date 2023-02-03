@@ -6,7 +6,6 @@ const BlogCard = ({ blog }) => {
   const dispatch = useDispatch();
 
   const handleDelete = () => {
-    // dispatch some action to the reducer to remove the blog from the store's state
     dispatch(deleteBlog(blog))
   }
 
